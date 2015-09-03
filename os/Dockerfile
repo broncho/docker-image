@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINAINER secondriver <secondriver@yeah.net>
+MAINTAINER secondriver <secondriver@yeah.net>
 
 RUN echo '"java-dev-base"' image && apt-get install -y wget
 
