@@ -24,4 +24,4 @@ RUN ${JAVA_HOME}/bin/java -version
 WORKDIR /app
 
 # Define default command.
-CMD ["${JAVA_HOME}/bin/java","-version"]
+CMD ${JAVA_HOME}/bin/java -version
