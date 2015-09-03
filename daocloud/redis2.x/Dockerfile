@@ -4,7 +4,7 @@ MAINTAINER secondriver <secondriver@yeah.net>
 
 RUN echo 'Redis 2.x version' && \
     cd /tmp && \
-    wget https://github.com/antirez/redis/archive/2.8.21.tar.gz && \
+    wget -O  redis-2.8.21.tar.gz https://github.com/antirez/redis/archive/2.8.21.tar.gz && \
     tar xvzf redis-2.8.21.tar.gz && \
     cd redis-2.8.21 && \
     make && \
