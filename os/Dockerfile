@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-RUN echo Hello Ubuntu 14.04
+RUN echo Hello Ubuntu 14.04 && apt-get install -y wget
 
 # Install Java.
 
@@ -24,4 +24,4 @@ RUN ${JAVA_HOME}/bin/java -version
 WORKDIR /app
 
 # Define default command.
-CMD ["bash"]
+CMD ["${JAVA_HOME}/bin/java","-version"]
