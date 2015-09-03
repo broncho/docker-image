@@ -1,9 +1,8 @@
-FROM ubuntu:14.04
+FROM daocloud.io/secondriver/os-ubuntu-base:master-e9f8522
 MAINTAINER secondriver <secondriver@yeah.net>
 
 RUN echo 'Redis 3.x version' && \
     cd /tmp && \
-    apt-get install -y wget && \
     wget http://download.redis.io/releases/redis-3.0.3.tar.gz && \
     tar xvzf redis-3.0.3.tar.gz && \
     cd redis-3.0.3 && \
