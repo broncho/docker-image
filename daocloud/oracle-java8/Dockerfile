@@ -1,7 +1,5 @@
-FROM secondriver/base-os:v1.0
+FROM daocloud.io/secondriver/base-os:master-init
 MAINTAINER secondriver <secondriver@yeah.net>
-
-RUN echo '"java-dev-base"' image && apt-get install -y wget
 
 ENV ORALCE_JDK_VERSION 8
 ENV ORACLE_JDK_U u60
@@ -15,8 +13,9 @@ ENV DOWN_URL http://download.oracle.com/otn-pub/java/jdk/${ORALCE_JDK_VERSION}${
 WORKDIR /opt
 
 # Install Java.
-RUN wget --header='Cookie:oraclelicense=accept-securebackup-cookie' ${DOWN_URL}
-RUN tar zxvf ${JDK_GZ}  && ln -s ${JDK_DIR} ${JAVA_HOME} && rm ${JDK_GZ}
+RUN echo '"java-dev-base"' image && \
+    wget --header='Cookie:oraclelicense=accept-securebackup-cookie' ${DOWN_URL} && \
+    tar zxvf ${JDK_GZ}  && ln -s ${JDK_DIR} ${JAVA_HOME} && rm ${JDK_GZ}
 
 # Define working directory.
 WORKDIR /app
