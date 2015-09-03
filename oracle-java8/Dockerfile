@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM secondriver/base-os:v1.0
 MAINTAINER secondriver <secondriver@yeah.net>
 
 RUN echo '"java-dev-base"' image && apt-get install -y wget

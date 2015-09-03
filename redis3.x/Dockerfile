@@ -1,4 +1,4 @@
-FROM daocloud.io/secondriver/os-ubuntu-base:master-e9f8522
+FROM secondriver/base-os:v1.0
 MAINTAINER secondriver <secondriver@yeah.net>
 
 RUN echo 'Redis 3.x version' && \
