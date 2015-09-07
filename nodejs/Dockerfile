@@ -14,16 +14,8 @@ RUN apt-get install -y wget && \
     ln -s /usr/local/${NODE_VERSION} ${NODE_HOME} && \
     rm -rf ${NODE_VERSION}.tar.gz
 
-#RUN echo "export PATH=$PATH:${NODE_HOME}/bin" >> ~/.profile && \
-#    cat ~/.profile && \
-#    . ~/.profile   && \
+WORKDIR ~/nodejs
 
-RUN npm install -g hexo-cli
+EXPOSE 8080 
 
-VOLUME /usr/local/hexo
-
-WORKDIR /usr/local/hexo
-
-CMD hexo server -p 4000
-
-EXPOSE 4000
+CMD node
