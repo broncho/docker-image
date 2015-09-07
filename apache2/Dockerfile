@@ -1,4 +1,4 @@
-FROM ubuntu:14:04
+FROM ubuntu:14.04
 MAINTAINER secondriver  <secondriver@yeah.net>
 
 ENV REFERSHED_AT 2015-09-07
