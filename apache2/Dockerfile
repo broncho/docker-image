@@ -6,7 +6,7 @@ ENV REFERSHED_AT 2015-09-07
 RUN apt-get -y update
 RUN apt-get -y install apache2
 
-VALUME ["/var/www"]
+VOLUME ["/var/www"]
 WORKDIR /var/www
 
 ENV APACHE_LOG_DIR /var/log/apache2

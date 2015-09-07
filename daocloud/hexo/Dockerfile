@@ -2,18 +2,28 @@ FROM ubuntu:14.04
 MAINTAINER secondriver  <secondriver@yeah.net>
 ENV REFERSHED_AT 2015-09-07
 
-ENV NODE_VERSION 0.12
+ENV NODE_VERSION node-v0.12.7-linux-x64
+ENV NODE_HOME  /usr/local/nodejs
+ENV PATH=$NODE_HOME/bin:$PATH
 
-RUN apt-get update && \
-    apt-get install -y wget && \
-    wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
- 
-RUN nvm install $NODE_VERSION
-RUN npm install -g hexo-cli
+WORKDIR /usr/local
 
-VALUME /usr/local/hexo
+RUN apt-get install -y wget && \
+    wget  https://nodejs.org/dist/latest/${NODE_VERSION}.tar.gz && \
+    tar zxvf ${NODE_VERSION}.tar.gz && \
+    ln -s /usr/local/${NODE_VERSION} ${NODE_HOME} && \
+    rm -rf ${NODE_VERSION}.tar.gz
+
+#RUN echo "export PATH=$PATH:${NODE_HOME}/bin" >> ~/.profile && \
+#    cat ~/.profile && \
+#    . ~/.profile   && \
+
+RUN  npm install -g hexo-cli
+
+VOLUME /usr/local/hexo
+
 WORKDIR /usr/local/hexo
 
-ENTRYPOINT hexo server -p 4000
+CMD hexo server -p 4000
 
 EXPOSE 4000
