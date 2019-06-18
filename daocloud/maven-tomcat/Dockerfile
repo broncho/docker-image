@@ -19,8 +19,10 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
     F3A04C595DB5B6A5F1ECA43E3B7BBB100D811BBE \
     F7DA48BB64BCB84ECBA7EE6935CD23C10D498E23
 
-ENV TOMCAT_VERSION 8.0.43
-ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+ENV TOMCAT_VERSION 8.5.42
+
+# ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+ENV TOMCAT_TGZ_URL http://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 RUN set -x \
     && curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
