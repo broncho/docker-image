@@ -1,0 +1,44 @@
+version: '3'
+volumes:
+  mysql_data:
+      driver: local
+services:
+  mysql:
+      image: mysql:5.7.29
+      volumes:
+        - mysql_data:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: keycloak
+        MYSQL_USER: keycloak
+        MYSQL_PASSWORD: keycloak
+  keycloak-node1:
+      image: jboss/keycloak:9.0.0
+      environment:
+        DB_VENDOR: mysql
+        DB_ADDR: mysql
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: keycloak
+        JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+      ports:
+        - 8081:8080
+      depends_on:
+        - mysql
+  keycloak-node2:
+      image: jboss/keycloak:9.0.0
+      environment:
+        DB_VENDOR: mysql
+        DB_ADDR: mysql
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: keycloak
+        JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+      ports:
+        - 8082:8080
+      depends_on:
+        - mysql
