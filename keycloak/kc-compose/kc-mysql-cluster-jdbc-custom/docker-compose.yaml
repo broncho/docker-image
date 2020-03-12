@@ -13,7 +13,7 @@ services:
         MYSQL_USER: keycloak
         MYSQL_PASSWORD: keycloak
   keycloak-node1:
-      image: secondriver/kc9:cluster
+      image: secondriver/kc9:cluster.custom
       environment:
         DB_VENDOR: mysql
         DB_ADDR: mysql
@@ -31,7 +31,7 @@ services:
       depends_on:
         - mysql
   keycloak-node2:
-      image: secondriver/kc9:cluster
+      image: secondriver/kc9:cluster.custom
       environment:
         DB_VENDOR: mysql
         DB_ADDR: mysql

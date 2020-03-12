@@ -2,10 +2,6 @@ version: '3.2'
 volumes:
   mysql_data:
       driver: local
-  kc_theme_data:
-      driver: local
-  kc_cert_data:
-      driver: local
 services:
   mysql:
       image: mysql:5.7.29
@@ -18,9 +14,6 @@ services:
         MYSQL_PASSWORD: keycloak
   keycloak-node1:
       image: secondriver/kc9:preview
-      volumes:
-        - kc_cert_data:/etc/x509
-        - kc_theme_data:/opt/jboss/keycloak/themes
       environment:
         DB_VENDOR: mysql
         DB_ADDR: mysql
@@ -37,9 +30,6 @@ services:
         - mysql
   keycloak-node2:
       image: secondriver/kc9:preview
-      volumes:
-        - kc_cert_data:/etc/x509
-        - kc_theme_data:/opt/jboss/keycloak/themes
       environment:
         DB_VENDOR: mysql
         DB_ADDR: mysql
