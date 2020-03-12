@@ -1,0 +1,62 @@
+version: '3.0'
+volumes:
+  mysql_data:
+      driver: local
+  nginx_data:
+      driver: local
+  kc_data:
+      driver: local
+services:
+  nginx:
+      image: nginx:1.17.9
+      volumes:
+        - nginx_data:/etc/nginx/conf.d
+      ports:
+        - 80:8080
+  mysql:
+      image: mysql:5.7.29
+      volumes:
+        - mysql_data:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: keycloak
+        MYSQL_USER: keycloak
+        MYSQL_PASSWORD: keycloak
+  keycloak-node1:
+      image: secondriver/kc9:preview
+      volumes:
+        - kc_data:/etc/x509/https
+        - kc_data:/opt/jboss/keycloak/themes
+      environment:
+        DB_VENDOR: mysql
+        DB_ADDR: mysql
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: keycloak
+        JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+        PROXY_ADDRESS_FORWARDING: "true"
+      ports:
+        - 8081:8080
+      depends_on:
+        - mysql
+  keycloak-node2:
+      image: secondriver/kc9:preview
+      volumes:
+        - kc_data:/etc/x509/https
+        - kc_data:/opt/jboss/keycloak/themes
+      environment:
+        DB_VENDOR: mysql
+        DB_ADDR: mysql
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: keycloak
+        JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+        PROXY_ADDRESS_FORWARDING: "true"
+      ports:
+        - 8082:8080
+      depends_on:
+        - mysql
