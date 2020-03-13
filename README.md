@@ -1,6 +1,6 @@
 ## 简介
 
-该项目主要存储[secondriver's docker image repository](https://hub.docker.com/u/secondrirver)的镜像信息
+该项目主要存储[secondriver's docker image repository](https://hub.docker.com/u/secondriver)的镜像信息
  
 ## 目录
 
