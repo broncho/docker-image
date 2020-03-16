@@ -21,8 +21,6 @@ services:
         DB_USER: keycloak
         DB_PASSWORD: keycloak
         JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: admin
         PROXY_ADDRESS_FORWARDING: "true"
         JGROUPS_DISCOVERY_PROTOCOL: "JDBC_PING"
         JGROUPS_DISCOVERY_PROPERTIES: "datasource_jndi_name=java:jboss/datasources/KeycloakDS"
@@ -39,8 +37,6 @@ services:
         DB_USER: keycloak
         DB_PASSWORD: keycloak
         JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: admin
         PROXY_ADDRESS_FORWARDING: "true"
         JGROUPS_DISCOVERY_PROTOCOL: "JDBC_PING"
         JGROUPS_DISCOVERY_PROPERTIES: "datasource_jndi_name=java:jboss/datasources/KeycloakDS"

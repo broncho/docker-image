@@ -21,8 +21,6 @@ services:
         DB_USER: keycloak
         DB_PASSWORD: keycloak
         JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: admin
         PROXY_ADDRESS_FORWARDING: "true"
       ports:
         - 8081:8080
@@ -37,8 +35,6 @@ services:
         DB_USER: keycloak
         DB_PASSWORD: keycloak
         JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: admin
         PROXY_ADDRESS_FORWARDING: "true"
       ports:
         - 8082:8080
