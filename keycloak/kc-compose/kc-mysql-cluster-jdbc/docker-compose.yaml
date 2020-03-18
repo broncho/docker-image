@@ -13,13 +13,15 @@ services:
         MYSQL_USER: keycloak
         MYSQL_PASSWORD: keycloak
   keycloak-node1:
-      image: secondriver/kc9:cluster
+      image: secondriver/kc9:preview
       environment:
         DB_VENDOR: mysql
         DB_ADDR: mysql
         DB_DATABASE: keycloak
         DB_USER: keycloak
         DB_PASSWORD: keycloak
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
         JDBC_PARAMS: "connectTimeout=30000&useSSL=false"
         PROXY_ADDRESS_FORWARDING: "true"
         JGROUPS_DISCOVERY_PROTOCOL: "JDBC_PING"
@@ -29,7 +31,7 @@ services:
       depends_on:
         - mysql
   keycloak-node2:
-      image: secondriver/kc9:cluster
+      image: secondriver/kc9:preview
       environment:
         DB_VENDOR: mysql
         DB_ADDR: mysql
